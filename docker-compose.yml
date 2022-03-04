@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  converter:
+    container_name: converter
+    build: .
+    restart: always
+    ports:
+      - 9091:9091
+    depends_on:
+      - mongo
+    environment:
+      PORT: 9091
+      MONGO_URI: mongodb://mongo/
+      MONGO_DB: upload
+      URL: /api/v1/
+      URLBASE: 'http://localhost:'
+      FORMATS_SUPPORTED_VIDEO: "['mov', 'm4a', '3gp', '3g2', 'mj2', 'mp4']"
+      FORMATS_SUPPORTED_IMAGE: "['jpeg', 'png', 'jpg']"
+      FORMATS_SUPPORTED_DOC: "['docx']"
+    volumes:
+      - converter_data:/app
+    networks:
+      - comvertnet
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:      
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - comvertnet
+
+  mongo-express:
+    image: mongo-express:0.54
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: rootpass
+      ME_CONFIG_MONGODB_URL: mongodb://mongo/
+    networks:
+      - comvertnet
+
+volumes:
+  mongo_data:
+  converter_data:
+
+networks:
+  comvertnet:
