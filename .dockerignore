@@ -7,3 +7,4 @@ npm-debug.log
 Dockerfile
 .env
 README.md
+Jenkinsfile
