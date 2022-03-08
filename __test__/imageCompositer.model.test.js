@@ -9,7 +9,7 @@ accordance with the terms of the license agreement you entered into
 with Jalasoft.
 */
 
-const ImageCompositer = require('../src/models/ImageCompositer.model');
+const ImageCompositer = require('../src/models/imageCompositer.model');
 const ConverterExecption = require('../src/Exceptions/converter.exception');
 
 describe('Test Image Compositer', () => {
