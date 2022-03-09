@@ -10,13 +10,14 @@ with Jalasoft.
 */
 
 const ImageConverter = require('../src/models/imageConverter.model');
+const path = require('path');
 
 describe('Test Image Converter', () => {
 
   test('Happy path', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 100, high: 250 },
       'jpg',
       360,
@@ -24,16 +25,16 @@ describe('Test Image Converter', () => {
       false,
       false
     );
+
     const result = await imageConverter.convert();
     const { response } = result;
-    
     expect(response).toBe(true);
   });
 
   test('Valid input aspect ratio: width', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 500 },
       'jpg',
       360,
@@ -49,8 +50,8 @@ describe('Test Image Converter', () => {
 
   test('Invalid input aspect ratio:', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: '500' },
       'jpg',
       360,
@@ -63,8 +64,8 @@ describe('Test Image Converter', () => {
 
   test('Valid input rotate', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 500 },
       'jpg',
       80,
@@ -80,8 +81,8 @@ describe('Test Image Converter', () => {
 
   test('Invalid input rotate', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: '500' },
       'jpg',
       '',
@@ -94,8 +95,8 @@ describe('Test Image Converter', () => {
 
   test('Valid input format', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 500 },
       'png',
       300,
@@ -125,8 +126,8 @@ describe('Test Image Converter', () => {
 
   test('Valid input gray scale', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 500 },
       'jpeg',
       null,
@@ -142,8 +143,8 @@ describe('Test Image Converter', () => {
 
   test('Invalid input gray scale', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: '500' },
       'jpg',
       null,
@@ -156,8 +157,8 @@ describe('Test Image Converter', () => {
 
   test('Valid input mirror effect', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 500 },
       'jpeg',
       null,
@@ -173,8 +174,8 @@ describe('Test Image Converter', () => {
 
   test('Valid input negative effect', async () => {
     const imageConverter = new ImageConverter(
-      __dirname + './files/ocean.jpg',
-      __dirname + './files/image-converter-test',
+      __dirname + '/files/ocean.jpg',
+      __dirname + '/files/image-converter-test',
       { width: 500 },
       'jpeg',
       null,

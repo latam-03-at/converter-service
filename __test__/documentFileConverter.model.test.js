@@ -15,12 +15,8 @@ const DocumentFileConverter = require('../src/models/documentFileConverter.model
 const fs = require('fs');
 
 describe('Document Converter tests', () => {
-  const saveDocumentPath = `${__dirname}/files/documentFilesFolder/`;
-
-  beforeAll(() => {
-    fs.mkdirSync(saveDocumentPath, { recursive: true });
-  });
-
+  const saveDocumentPath = `${__dirname}/files/documentFilesFolder`;
+  
   test('Document converted success', async () => {
     const documentFileConverter = new DocumentFileConverter(
       'pdf',
@@ -31,9 +27,5 @@ describe('Document Converter tests', () => {
     expect(() => documentFileConverter.convert()).not.toThrow(
       ConverterException
     );
-  });
-
-  afterAll(() => {
-    fs.rmSync(saveDocumentPath, { recursive: true, force: true });
   });
 });
