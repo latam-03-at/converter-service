@@ -7,11 +7,11 @@ pipeline {
 
     stages {
         
-        stage("Clone Repository") {
-            steps {
-                git branch: "main", url: "https://github.com/latam-03-at/converter-service"
-            }
-        }
+        //stage("Clone Repository") {
+        //    steps {
+        //        git branch: "main", url: "https://github.com/latam-03-at/converter-service"
+        //    }
+        //}
         
         stage('Pre-requirements') {
             steps {
