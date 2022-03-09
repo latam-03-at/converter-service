@@ -16,9 +16,9 @@ describe('Test Image Compositer', () => {
 
   test('Happy path', async () => {
     const imageCompositer = new ImageCompositer(
-      __dirname + './files/ocean.jpg',
-      [{ input: __dirname + './files/fish.png', top: 200, left:250 }],
-      __dirname + './files/test-image',
+      __dirname + '/files/ocean.jpg',
+      [{ input: __dirname + '/files/fish.png', top: 200, left:250 }],
+      __dirname + '/files/test-image',
       'jpeg'
     );
     const result = await imageCompositer.composite();
