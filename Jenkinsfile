@@ -35,7 +35,7 @@ pipeline {
                         "-Dsonar.projectKey=converter_ci " +
                         "-Dsonar.sources=. " +
                         "-Dsonar.javascript.lcov.reportPaths=${WORKSPACE}/coverage/lcov.info"
-                    withSonarQubeEnv('server_sonar_daof') {
+                    withSonarQubeEnv('server_sonar_admin') {
                         sh "${scannerHome}/bin/sonar-scanner ${scannerParameters}"
                     }
                 }
