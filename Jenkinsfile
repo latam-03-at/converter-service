@@ -34,11 +34,11 @@ pipeline {
         stage ("Sonarqube analysis") {
             steps{
                 script{
-                    def scannerHome = tool 'mysonarq'
+                    def scannerHome = tool 'gtc_sonar_stoh'
                     def scannerParameters = "-Dsonar.projectName=convert_ci " +
                         "-Dsonar.projectKey=convert_ci -Dsonar.sources=. "+
                         "-Dsonar.javascript.lcov.reportPaths=${WORKSPACE}/coverage/lcov.info"
-                    withSonarQubeEnv('mysonarserver') {
+                    withSonarQubeEnv('server_sonar_stoh') {
                         sh "${scannerHome}/bin/sonar-scanner ${scannerParameters}"
                     }
                 }
