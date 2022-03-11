@@ -42,3 +42,5 @@ jspm_packages/
 # Custom
 files
 data
+*.zip
+.scannerwork
