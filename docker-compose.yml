@@ -6,11 +6,11 @@ services:
     build: .
     restart: always
     ports:
-      - 9091:9091
+      - 9094:9090
     depends_on:
       - mongo
     environment:
-      PORT: 9091
+      PORT: 9090
       MONGO_URI: mongodb://mongo/
       MONGO_DB: upload
       URL: /api/v1/

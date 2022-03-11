@@ -5,7 +5,8 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN apt update && apt install ffmpeg -y
-RUN apt install libreoffice
+RUN apt-get update
+RUN apt-get install libreoffice -y
 
 RUN npm install
 
