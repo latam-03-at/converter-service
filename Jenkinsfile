@@ -59,5 +59,22 @@ pipeline {
                 //}
             }
         }
+        stage("Push to Docker Hub") {
+            environment {
+                DOCKERHUB_KEY = credentials("stoh_dockerhub")
+        	}
+            
+			steps {
+				sh "echo $DOCKERHUB_KEY_PSW | docker login -u $DOCKERHUB_KEY_USR --password-stdin"
+				sh "docker build --network=comvertnet -t stospina/image-converter:${BUILD_NUMBER} ."
+			    sh "docker push stospina/image-converter:${BUILD_NUMBER}"
+			}
+
+			post {
+			    always {
+			        sh 'docker logout'
+			    }
+			}
+		}
     }
 }
