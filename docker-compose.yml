@@ -6,7 +6,7 @@ services:
     build: .
     restart: always
     ports:
-      - 9091:9091
+      - 9094:9091
     depends_on:
       - mongo
     environment:
