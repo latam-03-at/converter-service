@@ -141,6 +141,7 @@ pipeline {
                     sh "scp ${WORKSPACE}/validate-production.sh $SERVER_PRODUCTION:/home/atuser/$FOLDER_NAME"
                     sh "ssh -o 'StrictHostKeyChecking no' $SERVER_PRODUCTION bash /home/atuser/$FOLDER_NAME/validate-production.sh converter ${BUILD_NUMBER}"
                 }
+            }
         }
         
     }
