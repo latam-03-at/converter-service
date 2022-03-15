@@ -42,7 +42,7 @@ echo "--> create the first converter container"
     -e MONGO_URI=mongodb://mongo/ \
     -e MONGO_DB=upload \
     -e URL=/api/v1/ \
-    -e URLBASE=http://localhost: \
+    -e URLBASE=http://20.25.119.241: \
     -e FORMATS_SUPPORTED_VIDEO="['mov', 'm4a', '3gp', '3g2', 'mj2', 'mp4']" \
     -e FORMATS_SUPPORTED_IMAGE="['jpeg', 'png', 'jpg']" \
     -e FORMATS_SUPPORTED_DOC="['docx']" \

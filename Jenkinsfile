@@ -92,7 +92,7 @@ pipeline {
             steps {
                 sshagent(["azure_vm_key"]) {
                     sh "ssh -o 'StrictHostKeyChecking no' $SERVER_DEV mkdir -p /home/calebespinoza/$FOLDER_NAME" 
-                    sh "scp /home/ubuntu/Downloads/converter/validate-container.sh $SERVER_DEV:/home/calebespinoza/$FOLDER_NAME"
+                    sh "scp ${WORKSPACE}/validate-container.sh $SERVER_DEV:/home/calebespinoza/$FOLDER_NAME"
                     sh "ssh -o 'StrictHostKeyChecking no' $SERVER_DEV bash /home/calebespinoza/$FOLDER_NAME/validate-container.sh converter ${BUILD_NUMBER}"
                 }
                 
