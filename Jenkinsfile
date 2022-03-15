@@ -127,6 +127,21 @@ pipeline {
 			    }
 			}
         }
+
+        // Continuous Deployment
+
+        stage ("Deploy to Production Environment") {
+            environment {
+                SERVER_PRODUCTION = "atuser@20.25.80.241"
+        	}
+
+            steps {
+                sshagent(["azure_vm_prod"]) {
+                    sh "ssh -o 'StrictHostKeyChecking no' $SERVER_PRODUCTION mkdir -p /home/atuser/$FOLDER_NAME" 
+                    sh "scp ${WORKSPACE}/validate-production.sh $SERVER_PRODUCTION:/home/atuser/$FOLDER_NAME"
+                    sh "ssh -o 'StrictHostKeyChecking no' $SERVER_PRODUCTION bash /home/atuser/$FOLDER_NAME/validate-production.sh converter ${BUILD_NUMBER}"
+                }
+        }
         
     }
 }
