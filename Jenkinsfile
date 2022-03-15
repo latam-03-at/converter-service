@@ -17,12 +17,6 @@ pipeline {
     stages {
 
         // Continuous Integration
-
-        stage("Clone Repository") {
-            steps {
-                git branch: "feature/integrate-sonarqube", url: "https://github.com/latam-03-at/converter-service.git"
-            }
-        }
         
         stage("Pre-requirements") {
             steps {
